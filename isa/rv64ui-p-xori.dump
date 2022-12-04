@@ -1,0 +1,201 @@
+
+rv64ui-p-xori:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000080001000 <test_2>:
+    80001000:	00200193          	li	gp,2
+    80001004:	00ff10b7          	lui	ra,0xff1
+    80001008:	f000809b          	addiw	ra,ra,-256 # ff0f00 <tohost-0x7f00f100>
+    8000100c:	f0f0c713          	xori	a4,ra,-241
+    80001010:	ff00f3b7          	lui	t2,0xff00f
+    80001014:	00f3839b          	addiw	t2,t2,15 # ffffffffff00f00f <_end+0xffffffff7f00cfef>
+    80001018:	1c771663          	bne	a4,t2,800011e4 <fail>
+
+000000008000101c <test_3>:
+    8000101c:	00300193          	li	gp,3
+    80001020:	0ff010b7          	lui	ra,0xff01
+    80001024:	ff00809b          	addiw	ra,ra,-16 # ff00ff0 <tohost-0x700ff010>
+    80001028:	0f00c713          	xori	a4,ra,240
+    8000102c:	0ff013b7          	lui	t2,0xff01
+    80001030:	f003839b          	addiw	t2,t2,-256 # ff00f00 <tohost-0x700ff100>
+    80001034:	1a771863          	bne	a4,t2,800011e4 <fail>
+
+0000000080001038 <test_4>:
+    80001038:	00400193          	li	gp,4
+    8000103c:	00ff10b7          	lui	ra,0xff1
+    80001040:	8ff0809b          	addiw	ra,ra,-1793 # ff08ff <tohost-0x7f00f701>
+    80001044:	70f0c713          	xori	a4,ra,1807
+    80001048:	00ff13b7          	lui	t2,0xff1
+    8000104c:	ff03839b          	addiw	t2,t2,-16 # ff0ff0 <tohost-0x7f00f010>
+    80001050:	18771a63          	bne	a4,t2,800011e4 <fail>
+
+0000000080001054 <test_5>:
+    80001054:	00500193          	li	gp,5
+    80001058:	f00ff0b7          	lui	ra,0xf00ff
+    8000105c:	00f0809b          	addiw	ra,ra,15 # fffffffff00ff00f <_end+0xffffffff700fcfef>
+    80001060:	0f00c713          	xori	a4,ra,240
+    80001064:	f00ff3b7          	lui	t2,0xf00ff
+    80001068:	0ff3839b          	addiw	t2,t2,255 # fffffffff00ff0ff <_end+0xffffffff700fd0df>
+    8000106c:	16771c63          	bne	a4,t2,800011e4 <fail>
+
+0000000080001070 <test_6>:
+    80001070:	00600193          	li	gp,6
+    80001074:	ff00f0b7          	lui	ra,0xff00f
+    80001078:	7000809b          	addiw	ra,ra,1792 # ffffffffff00f700 <_end+0xffffffff7f00d6e0>
+    8000107c:	70f0c093          	xori	ra,ra,1807
+    80001080:	ff00f3b7          	lui	t2,0xff00f
+    80001084:	00f3839b          	addiw	t2,t2,15 # ffffffffff00f00f <_end+0xffffffff7f00cfef>
+    80001088:	14709e63          	bne	ra,t2,800011e4 <fail>
+
+000000008000108c <test_7>:
+    8000108c:	00700193          	li	gp,7
+    80001090:	00000213          	li	tp,0
+    80001094:	0ff010b7          	lui	ra,0xff01
+    80001098:	ff00809b          	addiw	ra,ra,-16 # ff00ff0 <tohost-0x700ff010>
+    8000109c:	0f00c713          	xori	a4,ra,240
+    800010a0:	00070313          	mv	t1,a4
+    800010a4:	00120213          	addi	tp,tp,1 # 1 <tohost-0x7fffffff>
+    800010a8:	00200293          	li	t0,2
+    800010ac:	fe5214e3          	bne	tp,t0,80001094 <test_7+0x8>
+    800010b0:	0ff013b7          	lui	t2,0xff01
+    800010b4:	f003839b          	addiw	t2,t2,-256 # ff00f00 <tohost-0x700ff100>
+    800010b8:	12731663          	bne	t1,t2,800011e4 <fail>
+
+00000000800010bc <test_8>:
+    800010bc:	00800193          	li	gp,8
+    800010c0:	00000213          	li	tp,0
+    800010c4:	00ff10b7          	lui	ra,0xff1
+    800010c8:	8ff0809b          	addiw	ra,ra,-1793 # ff08ff <tohost-0x7f00f701>
+    800010cc:	70f0c713          	xori	a4,ra,1807
+    800010d0:	00000013          	nop
+    800010d4:	00070313          	mv	t1,a4
+    800010d8:	00120213          	addi	tp,tp,1 # 1 <tohost-0x7fffffff>
+    800010dc:	00200293          	li	t0,2
+    800010e0:	fe5212e3          	bne	tp,t0,800010c4 <test_8+0x8>
+    800010e4:	00ff13b7          	lui	t2,0xff1
+    800010e8:	ff03839b          	addiw	t2,t2,-16 # ff0ff0 <tohost-0x7f00f010>
+    800010ec:	0e731c63          	bne	t1,t2,800011e4 <fail>
+
+00000000800010f0 <test_9>:
+    800010f0:	00900193          	li	gp,9
+    800010f4:	00000213          	li	tp,0
+    800010f8:	f00ff0b7          	lui	ra,0xf00ff
+    800010fc:	00f0809b          	addiw	ra,ra,15 # fffffffff00ff00f <_end+0xffffffff700fcfef>
+    80001100:	0f00c713          	xori	a4,ra,240
+    80001104:	00000013          	nop
+    80001108:	00000013          	nop
+    8000110c:	00070313          	mv	t1,a4
+    80001110:	00120213          	addi	tp,tp,1 # 1 <tohost-0x7fffffff>
+    80001114:	00200293          	li	t0,2
+    80001118:	fe5210e3          	bne	tp,t0,800010f8 <test_9+0x8>
+    8000111c:	f00ff3b7          	lui	t2,0xf00ff
+    80001120:	0ff3839b          	addiw	t2,t2,255 # fffffffff00ff0ff <_end+0xffffffff700fd0df>
+    80001124:	0c731063          	bne	t1,t2,800011e4 <fail>
+
+0000000080001128 <test_10>:
+    80001128:	00a00193          	li	gp,10
+    8000112c:	00000213          	li	tp,0
+    80001130:	0ff010b7          	lui	ra,0xff01
+    80001134:	ff00809b          	addiw	ra,ra,-16 # ff00ff0 <tohost-0x700ff010>
+    80001138:	0f00c713          	xori	a4,ra,240
+    8000113c:	00120213          	addi	tp,tp,1 # 1 <tohost-0x7fffffff>
+    80001140:	00200293          	li	t0,2
+    80001144:	fe5216e3          	bne	tp,t0,80001130 <test_10+0x8>
+    80001148:	0ff013b7          	lui	t2,0xff01
+    8000114c:	f003839b          	addiw	t2,t2,-256 # ff00f00 <tohost-0x700ff100>
+    80001150:	08771a63          	bne	a4,t2,800011e4 <fail>
+
+0000000080001154 <test_11>:
+    80001154:	00b00193          	li	gp,11
+    80001158:	00000213          	li	tp,0
+    8000115c:	00ff10b7          	lui	ra,0xff1
+    80001160:	fff0809b          	addiw	ra,ra,-1 # ff0fff <tohost-0x7f00f001>
+    80001164:	00000013          	nop
+    80001168:	00f0c713          	xori	a4,ra,15
+    8000116c:	00120213          	addi	tp,tp,1 # 1 <tohost-0x7fffffff>
+    80001170:	00200293          	li	t0,2
+    80001174:	fe5214e3          	bne	tp,t0,8000115c <test_11+0x8>
+    80001178:	00ff13b7          	lui	t2,0xff1
+    8000117c:	ff03839b          	addiw	t2,t2,-16 # ff0ff0 <tohost-0x7f00f010>
+    80001180:	06771263          	bne	a4,t2,800011e4 <fail>
+
+0000000080001184 <test_12>:
+    80001184:	00c00193          	li	gp,12
+    80001188:	00000213          	li	tp,0
+    8000118c:	f00ff0b7          	lui	ra,0xf00ff
+    80001190:	00f0809b          	addiw	ra,ra,15 # fffffffff00ff00f <_end+0xffffffff700fcfef>
+    80001194:	00000013          	nop
+    80001198:	00000013          	nop
+    8000119c:	0f00c713          	xori	a4,ra,240
+    800011a0:	00120213          	addi	tp,tp,1 # 1 <tohost-0x7fffffff>
+    800011a4:	00200293          	li	t0,2
+    800011a8:	fe5212e3          	bne	tp,t0,8000118c <test_12+0x8>
+    800011ac:	f00ff3b7          	lui	t2,0xf00ff
+    800011b0:	0ff3839b          	addiw	t2,t2,255 # fffffffff00ff0ff <_end+0xffffffff700fd0df>
+    800011b4:	02771863          	bne	a4,t2,800011e4 <fail>
+
+00000000800011b8 <test_13>:
+    800011b8:	00d00193          	li	gp,13
+    800011bc:	0f004093          	xori	ra,zero,240
+    800011c0:	0f000393          	li	t2,240
+    800011c4:	02709063          	bne	ra,t2,800011e4 <fail>
+
+00000000800011c8 <test_14>:
+    800011c8:	00e00193          	li	gp,14
+    800011cc:	00ff00b7          	lui	ra,0xff0
+    800011d0:	0ff0809b          	addiw	ra,ra,255 # ff00ff <tohost-0x7f00ff01>
+    800011d4:	70f0c013          	xori	zero,ra,1807
+    800011d8:	00000393          	li	t2,0
+    800011dc:	00701463          	bne	zero,t2,800011e4 <fail>
+    800011e0:	02301a63          	bne	zero,gp,80001214 <pass>
+
+00000000800011e4 <fail>:
+    800011e4:	0ff0000f          	fence
+    800011e8:	00001597          	auipc	a1,0x1
+    800011ec:	e1858593          	addi	a1,a1,-488 # 80002000 <hello>
+    800011f0:	00f00613          	li	a2,15
+    800011f4:	04000893          	li	a7,64
+    800011f8:	00000073          	ecall
+    800011fc:	00018063          	beqz	gp,800011fc <fail+0x18>
+    80001200:	00119193          	slli	gp,gp,0x1
+    80001204:	0011e193          	ori	gp,gp,1
+    80001208:	05d00893          	li	a7,93
+    8000120c:	00018513          	mv	a0,gp
+    80001210:	00000073          	ecall
+
+0000000080001214 <pass>:
+    80001214:	0ff0000f          	fence
+    80001218:	00100513          	li	a0,1
+    8000121c:	00001597          	auipc	a1,0x1
+    80001220:	de458593          	addi	a1,a1,-540 # 80002000 <hello>
+    80001224:	00f00613          	li	a2,15
+    80001228:	04000893          	li	a7,64
+    8000122c:	00000073          	ecall
+    80001230:	00100193          	li	gp,1
+    80001234:	05d00893          	li	a7,93
+    80001238:	00000513          	li	a0,0
+    8000123c:	00000073          	ecall
+    80001240:	c0001073          	unimp
+
+Disassembly of section .data:
+
+0000000080002000 <hello>:
+    80002000:	6948                	.2byte	0x6948
+    80002002:	2074                	.2byte	0x2074
+    80002004:	646f6f67          	.4byte	0x646f6f67
+    80002008:	7420                	.2byte	0x7420
+    8000200a:	6172                	.2byte	0x6172
+    8000200c:	2170                	.2byte	0x2170
+    8000200e:	000a                	.2byte	0xa
+
+0000000080002010 <goodbye>:
+    80002010:	6948                	.2byte	0x6948
+    80002012:	2074                	.2byte	0x2074
+    80002014:	6162                	.2byte	0x6162
+    80002016:	6464                	.2byte	0x6464
+    80002018:	7420                	.2byte	0x7420
+    8000201a:	6172                	.2byte	0x6172
+    8000201c:	2170                	.2byte	0x2170
+    8000201e:	000a                	.2byte	0xa
