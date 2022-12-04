@@ -156,12 +156,9 @@
 
 #define INTERRUPT_HANDLER j other_exception /* No interrupts should occur */
 
-#define RVTEST_CODE_BEGIN                                               \
-        .section .text.init;                                            \
-        .align  6;                                                      \
-        .weak stvec_handler;                                            \
-        .weak mtvec_handler;                                            \
-        .globl _start;                                                  \
+#define RVTEST_CODE_BEGIN
+
+
 _start:                                                                 \
         /* reset vector */                                              \
         j reset_vector;                                                 \
@@ -235,6 +232,11 @@ reset_vector:                                                           \
 
 #define RVTEST_PASS                                                     \
         fence;                                                          \
+        li a0,1;\
+        la a1,hello;\
+        li a2,15;\
+        li a7,64;\
+        ecall;\
         li TESTNUM, 1;                                                  \
         li a7, 93;                                                      \
         li a0, 0;                                                       \
@@ -243,6 +245,11 @@ reset_vector:                                                           \
 #define TESTNUM gp
 #define RVTEST_FAIL                                                     \
         fence;                                                          \
+	li a0,1;\
+	la a1,goodbye;\
+	li a2,15;\
+	li a7,64;\
+	ecall;\
 1:      beqz TESTNUM, 1b;                                               \
         sll TESTNUM, TESTNUM, 1;                                        \
         or TESTNUM, TESTNUM, 1;                                         \
@@ -255,7 +262,8 @@ reset_vector:                                                           \
 //-----------------------------------------------------------------------
 
 #define EXTRA_DATA
-
+	hello:.string "Hit good trap!\n";\
+	goodbye:.string "Hit bad trap!\n";
 #define RVTEST_DATA_BEGIN                                               \
         EXTRA_DATA                                                      \
         .pushsection .tohost,"aw",@progbits;                            \
